@@ -1,0 +1,76 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+ desc "Build Cleaning"
+  lane :cleanAndBuild do
+  clear_derived_data
+end
+  
+  desc "Install cocoapods"
+lane :install_pods do
+  cocoapods(
+      clean: true,
+      use_bundle_exec: false
+)
+end
+
+  desc "Sync certificates"
+	  lane :sync_certificates do
+    #read-only disables match from overriding the existing certificates.
+    	match({readonly: true, type: "development"})
+  end
+
+  desc "Sharing Build"
+  lane :uploadToDiawi do |values|
+    diawi(token: values[:token], file: values[:file])
+  end
+
+  desc "Create ipa"
+  	lane :build do
+
+  app_store_connect_api_key(
+    key_id: "4L52HUVVC4",
+    issuer_id: "69a6de90-9db5-47e3-e053-5b8c7c11a4d1",
+    key_filepath: "./AuthKey_4L52HUVVC4.p8",
+    duration: 1200, # optional (maximum 1200)
+    in_house: false # optional but may be required if using match/sigh
+  )
+    # Build Cleaning
+    cleanAndBuild
+    # Pod install
+    install_pods
+   # update certificates
+	 # sync_certificates
+   # update the signing automatically
+   # Getting Certificates from Apple Account
+     get_certificates           # invokes cert
+   # Getting provisioning profiles from Apple Account
+     get_provisioning_profile(app_identifier: "com.tspl.cross.concentrixone")   # invokes sigh
+     update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: "Debug",code_signing_identity: "iPhone Development")
+   # Increases the build number by 1
+	   increment_build_number
+   # Creates a signed file
+	   gym
+   # Build Sharing
+   uploadToDiawi token: "yyUqLNEoWKnkeJeGmSC45GH2Gkc7U9sLV3Vv7ATiLI", file: "./fastlane/builds/FastLaneExample.ipa"
+ end
+
+end
+
+

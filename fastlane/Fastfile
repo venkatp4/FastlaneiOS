@@ -44,22 +44,14 @@ end
     key_id: "4L52HUVVC4",
     issuer_id: "69a6de90-9db5-47e3-e053-5b8c7c11a4d1",
     key_filepath: "./AuthKey_4L52HUVVC4.p8",
-    duration: 1200, # optional (maximum 1200)
+    duration: 1200,
     in_house: false # optional but may be required if using match/sigh
   )
    # Build Cleaning
-      #cleanAndBuild
+      cleanAndBuild
    # Pod install
-      #install_pods
-   # update certificates
-	   # sync_certificates
-   # Getting Certificates from Apple Account
-     #get_certificates           # invokes cert
-   # Getting provisioning profiles from Apple Account
-     #get_provisioning_profile(app_identifier: app_identifier)   # invokes sigh
-   # update the signing automatically
-     #update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: configuration)
-     match(type: "development", readonly: false)
+      install_pods
+     match(type: "development", readonly: false, force_for_new_devices: true)
    # Increases the build number by 1
 	   increment_build_number
    # Creates a signed file

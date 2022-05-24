@@ -5,37 +5,57 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000677">
+      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.000339">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: app_store_connect_api_key" time="0.004635">
+      <testcase classname="fastlane.lanes" name="01: app_store_connect_api_key" time="0.003818">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: match" time="14.810412">
+      <testcase classname="fastlane.lanes" name="02: Switch to ios cleanAndBuild lane" time="0.00027">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="1.635638">
+      <testcase classname="fastlane.lanes" name="03: clear_derived_data" time="0.791907">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: gym" time="72.08706">
+      <testcase classname="fastlane.lanes" name="04: Switch to ios install_pods lane" time="0.000177">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: Switch to ios uploadToDiawi lane" time="0.000456">
+      <testcase classname="fastlane.lanes" name="05: cocoapods" time="1.979856">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: diawi" time="3.114533">
+      <testcase classname="fastlane.lanes" name="06: match" time="23.813398">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: increment_build_number" time="1.47731">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: gym" time="80.411753">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: Switch to ios uploadToDiawi lane" time="0.000334">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: diawi" time="3.091964">
         
       </testcase>
     

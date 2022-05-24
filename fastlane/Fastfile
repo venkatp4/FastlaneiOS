@@ -52,9 +52,9 @@ end
     in_house: false # optional but may be required if using match/sigh
   )
     # Build Cleaning
-    #cleanAndBuild
+    cleanAndBuild
     # Pod install
-    #install_pods
+    install_pods
    # update certificates
 	 # sync_certificates
    # update the signing automatically
@@ -62,7 +62,7 @@ end
      get_certificates           # invokes cert
    # Getting provisioning profiles from Apple Account
      get_provisioning_profile(app_identifier: "com.tspl.cross.concentrixone")   # invokes sigh
-     update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: "Debug",code_signing_identity: "iPhone Development")
+     update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: "Development",code_signing_identity: "iPhone Development")
    # Increases the build number by 1
 	   increment_build_number
    # Creates a signed file

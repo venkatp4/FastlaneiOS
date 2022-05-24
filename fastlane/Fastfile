@@ -52,9 +52,9 @@ end
     in_house: false # optional but may be required if using match/sigh
   )
     # Build Cleaning
-    cleanAndBuild
+    #cleanAndBuild
     # Pod install
-    install_pods
+    #install_pods
    # update certificates
 	 # sync_certificates
    # update the signing automatically

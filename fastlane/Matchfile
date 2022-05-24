@@ -1,14 +1,16 @@
-git_url("https://github.com/venkatp4/crispy-guacamole.git")
+git_url("https://github.com/venkatp4/match.git")
 
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-#app_identifier(CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier))
+app_identifier("com.tspl.cross.concentrixone")
 
-#username(CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)) # Your Apple Developer Portal username
+username("CnxOneiOSAccount@concentrix.com") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
 
 # The docs are available on https://docs.fastlane.tools/actions/match
+
+

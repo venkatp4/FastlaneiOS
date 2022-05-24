@@ -11,7 +11,7 @@ scheme("FastLaneExample")
 
 # Provide provisioning profiles to use
 
-export_options({method: "development"})
+#export_options({method: "development"})
 
 # Specify the path to store .ipa file
 output_directory("./fastlane/builds")

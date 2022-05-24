@@ -31,14 +31,6 @@ Build Cleaning
 
 Install cocoapods
 
-### ios sync_certificates
-
-```sh
-[bundle exec] fastlane ios sync_certificates
-```
-
-Sync certificates
-
 ### ios uploadToDiawi
 
 ```sh

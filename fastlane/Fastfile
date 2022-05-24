@@ -30,12 +30,6 @@ lane :install_pods do
 )
 end
 
-  desc "Sync certificates"
-	  lane :sync_certificates do
-    #read-only disables match from overriding the existing certificates.
-    	match({readonly: true, type: "development"})
-  end
-
   desc "Sharing Build"
   lane :uploadToDiawi do |values|
     diawi(token: values[:token], file: values[:file])
@@ -43,6 +37,8 @@ end
 
   desc "Create ipa"
   	lane :build do
+      app_identifier = "com.tspl.cross.concentrixone"
+      configuration = "development"
 
   app_store_connect_api_key(
     key_id: "4L52HUVVC4",
@@ -51,24 +47,25 @@ end
     duration: 1200, # optional (maximum 1200)
     in_house: false # optional but may be required if using match/sigh
   )
-    # Build Cleaning
-    #cleanAndBuild
-    # Pod install
-    #install_pods
+   # Build Cleaning
+      #cleanAndBuild
+   # Pod install
+      #install_pods
    # update certificates
-	 # sync_certificates
-   # update the signing automatically
+	   # sync_certificates
    # Getting Certificates from Apple Account
-     get_certificates           # invokes cert
+     #get_certificates           # invokes cert
    # Getting provisioning profiles from Apple Account
-     get_provisioning_profile(app_identifier: "com.tspl.cross.concentrixone")   # invokes sigh
-     update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: "Development",code_signing_identity: "iPhone Development")
+     #get_provisioning_profile(app_identifier: app_identifier)   # invokes sigh
+   # update the signing automatically
+     #update_project_provisioning(xcodeproj: "FastLaneExample.xcodeproj", profile: "./match_Development_comtsplcrossconcentrixone_1653285761.mobileprovision", build_configuration: configuration)
+     match(type: "development", readonly: false)
    # Increases the build number by 1
 	   increment_build_number
    # Creates a signed file
-	   gym
+	   gym( export_method: configuration, clean: true)
    # Build Sharing
-   uploadToDiawi token: "yyUqLNEoWKnkeJeGmSC45GH2Gkc7U9sLV3Vv7ATiLI", file: "./fastlane/builds/FastLaneExample.ipa"
+     uploadToDiawi token: "yyUqLNEoWKnkeJeGmSC45GH2Gkc7U9sLV3Vv7ATiLI", file: "./fastlane/builds/FastLaneExample.ipa"
  end
 
 end
